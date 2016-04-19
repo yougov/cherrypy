@@ -526,7 +526,7 @@ def popargs(*args, **kwargs):
         # from being called again, we will resolve remaining elements through
         # getattr() directly.
         if vpath:
-            return getattr(self, vpath.pop(0), None)
+            return getattr(self, vpath.pop(0).replace(".", "_"), None)
         else:
             return self
 
