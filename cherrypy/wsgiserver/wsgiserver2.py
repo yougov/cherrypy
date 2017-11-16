@@ -1361,6 +1361,8 @@ class HTTPConnection(object):
         except socket.error:
             e = sys.exc_info()[1]
             errnum = e.args[0]
+            self.server.error_log("socket.error %s" % repr(errnum),
+                                  level=logging.INFO)
             # sadly SSL sockets return a different (longer) time out string
             if (
                 errnum == 'timed out' or
